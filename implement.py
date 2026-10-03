@@ -52,8 +52,7 @@ def main():
             "8- Ver archivos cargados\n"
             "9- Salir\n"
             "--> "), 1, 9)
-
-        # ------------------------------------------------------------
+   # ------------------------------------------------------------
         if menu == 1:
             tipArch = validarRango(input(
                 "\nIndique el tipo de archivo:\n"
@@ -115,7 +114,7 @@ def main():
                 except Exception as error:
                     print("No se pudo graficar: {}".format(error))
 
-        # ------------------------------------------------------------
+ # ------------------------------------------------------------
         elif menu == 4:
             archivo = pedirArchivo(sis, ArchivoCSV, "CSV")
             if archivo is not None:
@@ -142,7 +141,7 @@ def main():
                 except Exception as error:
                     print("No se pudo calcular la diferencia: {}".format(error))
 
-        # ------------------------------------------------------------
+  # ------------------------------------------------------------
         elif menu == 5:
             archivo = pedirArchivo(sis, ArchivoMAT, "MAT")
             if archivo is not None:
@@ -203,7 +202,7 @@ def main():
                 except Exception as error:
                     print("No se pudo realizar la operacion: {}".format(error))
 
-        # ------------------------------------------------------------
+ # ------------------------------------------------------------
         elif menu == 7:
             archivo = pedirArchivo(sis, ArchivoMAT, "MAT")
             if archivo is not None:
