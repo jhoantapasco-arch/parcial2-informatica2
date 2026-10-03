@@ -8,53 +8,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.io as sio
 
-plt.ion()
-
-FS = 250                    # frecuencia de muestreo de los .mat (muestras/s)
-CARPETA = "graficos"        # carpeta donde se guardan las imagenes
-
-
-
-def validarEntero(t):
-    while True:
-        try:
-            return int(t)
-        except (ValueError, TypeError):
-            t = input("Ingrese un numero entero: ")
-
-
-def validarRango(t, minimo, maximo):
-    t = validarEntero(t)
-    while t < minimo or t > maximo:
-        t = validarEntero(input("Ingrese un valor entre {} y {}: ".format(minimo, maximo)))
-    return t
-
-
-def suma(a, b, c, d):
-    return a + b + c + d
-
-
-def resta(a, b, c, d):
-    return a - b - c - d
-
-
-def multiplicacion(a, b, c, d):
-    return a * b * c * d
-
-
-def nombreSeguro(texto):
-    """Deja solo letras, numeros, guion y guion bajo para usar en nombres de archivo."""
-    return re.sub(r"[^A-Za-z0-9_-]+", "_", str(texto)).strip("_")
-
-
-def guardarFigura(nombre):
-    """Guarda la figura activa (png) dentro de CARPETA y devuelve la ruta."""
-    os.makedirs(CARPETA, exist_ok=True)
-    ruta = os.path.join(CARPETA, nombre)
-    plt.savefig(ruta, dpi=150)
-    return ruta
-
-
 class ArchivoCSV:
     def __init__(self, ruta):
         self.__ruta = ruta
@@ -376,5 +329,51 @@ class Sistema:
     def buscarPorTipo(self, tipo):
         """Devuelve los nombres de los archivos que son de la clase indicada."""
         return [n for n, a in self.__archivos.items() if isinstance(a, tipo)]
+
+plt.ion()
+
+FS = 250                    # frecuencia de muestreo de los .mat (muestras/s)
+CARPETA = "graficos"        # carpeta donde se guardan las imagenes
+
+
+
+def validarEntero(t):
+    while True:
+        try:
+            return int(t)
+        except (ValueError, TypeError):
+            t = input("Ingrese un numero entero: ")
+
+
+def validarRango(t, minimo, maximo):
+    t = validarEntero(t)
+    while t < minimo or t > maximo:
+        t = validarEntero(input("Ingrese un valor entre {} y {}: ".format(minimo, maximo)))
+    return t
+
+
+def suma(a, b, c, d):
+    return a + b + c + d
+
+
+def resta(a, b, c, d):
+    return a - b - c - d
+
+
+def multiplicacion(a, b, c, d):
+    return a * b * c * d
+
+
+def nombreSeguro(texto):
+    """Deja solo letras, numeros, guion y guion bajo para usar en nombres de archivo."""
+    return re.sub(r"[^A-Za-z0-9_-]+", "_", str(texto)).strip("_")
+
+
+def guardarFigura(nombre):
+    """Guarda la figura activa (png) dentro de CARPETA y devuelve la ruta."""
+    os.makedirs(CARPETA, exist_ok=True)
+    ruta = os.path.join(CARPETA, nombre)
+    plt.savefig(ruta, dpi=150)
+    return ruta
 
 
